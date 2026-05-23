@@ -1,7 +1,10 @@
 <?php
 $page_title='Customers'; $active_nav='customers';
 require 'layout.php';
-
+if ($user_role !== 'admin') {
+    header("Location: dashboard.php");
+    exit;
+}
 // ── STAFF GUARD ──────────────────────────────────────────────────────────────
 if ($user_role === 'staff') {
     header("Location: orders.php"); exit;

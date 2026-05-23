@@ -1,7 +1,9 @@
 <?php
 // customer/_nav.php — include at top of every customer page
 // Requires: $active_page (string)
-
+header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+header("Pragma: no-cache");
+header("Expires: Thu, 01 Jan 1970 00:00:00 GMT");
 session_start();
 if (!isset($_SESSION['customer_id'])) { header("Location: login.php"); exit; }
 
@@ -38,6 +40,6 @@ $initials   = strtoupper(substr($cust_name,0,1));
       <div style="width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--purple));display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#fff"><?=$initials?></div>
       <span style="font-size:13px;font-weight:600;color:#fff"><?=htmlspecialchars($cust_name)?></span>
     </div>
-    <a href="<?php echo isset($base_path) ? $base_path : ''; ?>logout.php" class="cust-nav-link" title="Sign out" style="color:rgba(255,255,255,0.7)">⏻</a>
+   <a href="<?php echo isset($base_path) ? $base_path : ''; ?>logout.php" class="cust-nav-link" title="Sign out" style="color:rgba(255,255,255,0.7)">Logout</a>
   </div>
 </nav>

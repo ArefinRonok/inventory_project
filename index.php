@@ -222,12 +222,20 @@ session_start();
                 🔧 <span salt="toolmaster_logo">ToolMaster</span>
             </div>
             <nav class="nav-menu">
-                <a href="index.php" class="active">Home</a>
-                <a href="our-products.php">Our Products</a>
-                <a href="about.php">About Us</a>
-                <a href="contact.php">Contact</a>
-                <a href="login.php" class="btn btn-primary">Login / Sign Up</a>
-            </nav>
+    <a href="index.php" class="active">Home</a>
+    <a href="our-products.php">Our Products</a>
+    <a href="about.php">About Us</a>
+    <a href="contact.php">Contact</a>
+    <?php if (isset($_SESSION['user_id'])): ?>
+        <a href="dashboard.php" class="btn btn-primary">Dashboard</a>
+        <a href="logout.php" class="btn btn-secondary">Logout</a>
+    <?php elseif (isset($_SESSION['customer_id'])): ?>
+        <a href="shop.php" class="btn btn-primary">Shop</a>
+        <a href="logout.php" class="btn btn-secondary">Logout</a>
+    <?php else: ?>
+        <a href="login.php" class="btn btn-primary">Login / Sign Up</a>
+    <?php endif; ?>
+</nav>
         </div>
     </header>
 
@@ -266,7 +274,13 @@ session_start();
         </section>
 
         <div class="cta-buttons">
-            <a href="login.php" class="btn btn-primary">Shop Our Products</a>
+            <?php if (isset($_SESSION['customer_id'])): ?>
+    <a href="shop.php" class="btn btn-primary">Shop Our Products</a>
+<?php elseif (isset($_SESSION['user_id'])): ?>
+    <a href="dashboard.php" class="btn btn-primary">Go to Dashboard</a>
+<?php else: ?>
+    <a href="login.php" class="btn btn-primary">Shop Our Products</a>
+<?php endif; ?>
             <a href="contact.php" class="btn btn-secondary">Get in Touch</a>
         </div>
     </main>

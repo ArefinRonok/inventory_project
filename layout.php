@@ -1,7 +1,9 @@
 <?php
 // layout.php — include at top of every admin page after session_start()
 // Requires: $page_title, $active_nav
-
+header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+header("Pragma: no-cache");
+header("Expires: Thu, 01 Jan 1970 00:00:00 GMT");
 if (session_status() === PHP_SESSION_NONE) { session_start(); }
 if (!isset($_SESSION['user_id'])) { header("Location: login.php"); exit; }
 
@@ -33,52 +35,43 @@ $pending_orders = (int)$conn->query("SELECT COUNT(*) AS c FROM orders WHERE stat
 <div class="layout">
   <aside class="sidebar">
     <div class="sidebar-logo">
-      <div class="logo-icon">🔧</div>
-      <div class="logo-text">
-        <div class="company">The Tool Master BD</div>
-        <div class="tagline"><?= $user_role === 'staff' ? 'Staff Panel' : 'Admin Panel' ?></div>
-      </div>
-    </div>
+  <div class="logo-icon">🔧</div>
+  <div class="logo-text">
+    <div class="company">The Tool Master BD</div>
+    <div class="tagline"><?= $user_role === 'staff' ? 'Staff Panel' : 'Admin Panel' ?></div>
+  </div>
+</div>
 
-    <!-- OVERVIEW: Admin only -->
-    <?php if ($user_role === 'admin'): ?>
-    <div class="nav-section">Overview</div>
-    <a href="<?php echo isset($base_path) ? $base_path : ''; ?>dashboard.php"
-       class="nav-item <?= $active_nav==='dashboard' ?'active':'' ?>">
-      <span class="nav-icon">📊</span> Dashboard
-    </a>
-    <?php endif; ?>
+<div class="nav-section">Overview</div>
+<a href="<?php echo isset($base_path) ? $base_path : ''; ?>dashboard.php"
+   class="nav-item <?= $active_nav==='dashboard' ?'active':'' ?>">
+  <span class="nav-icon">📊</span> Dashboard
+</a>
 
-    <!-- INVENTORY -->
-    <div class="nav-section">Inventory</div>
-    <a href="<?php echo isset($base_path) ? $base_path : ''; ?>products.php"
-       class="nav-item <?= $active_nav==='products' ?'active':'' ?>">
-      <span class="nav-icon">📦</span> Products
-      <?php if ($low_stock > 0): ?><span class="nav-badge"><?= $low_stock ?></span><?php endif; ?>
-    </a>
-    <?php if ($user_role === 'admin'): ?>
-    <a href="<?php echo isset($base_path) ? $base_path : ''; ?>add_product.php"
-       class="nav-item <?= $active_nav==='add_product' ?'active':'' ?>">
-      <span class="nav-icon">➕</span> Add Product
-    </a>
-    <?php endif; ?>
+<div class="nav-section">Inventory</div>
+<a href="<?php echo isset($base_path) ? $base_path : ''; ?>products.php"
+   class="nav-item <?= $active_nav==='products' ?'active':'' ?>">
+  <span class="nav-icon">📦</span> Products
+  <?php if ($low_stock > 0): ?><span class="nav-badge"><?= $low_stock ?></span><?php endif; ?>
+</a>
+<a href="<?php echo isset($base_path) ? $base_path : ''; ?>add_product.php"
+   class="nav-item <?= $active_nav==='add_product' ?'active':'' ?>">
+  <span class="nav-icon">➕</span> Add Product
+</a>
 
-    <!-- COMMERCE -->
-    <div class="nav-section">Commerce</div>
-    <a href="orders.php"
-       class="nav-item <?= $active_nav==='orders' ?'active':'' ?>">
-      <span class="nav-icon">🧾</span> Orders
-      <?php if ($pending_orders > 0): ?><span class="nav-badge"><?= $pending_orders ?></span><?php endif; ?>
-    </a>
-    <?php if ($user_role === 'admin'): ?>
-    <a href="<?php echo isset($base_path) ? $base_path : ''; ?>customers.php"
-       class="nav-item <?= $active_nav==='customers' ?'active':'' ?>">
-      <span class="nav-icon">👥</span> Customers
-    </a>
-    <?php endif; ?>
+<div class="nav-section">Commerce</div>
+<a href="orders.php"
+   class="nav-item <?= $active_nav==='orders' ?'active':'' ?>">
+  <span class="nav-icon">🧾</span> Orders
+  <?php if ($pending_orders > 0): ?><span class="nav-badge"><?= $pending_orders ?></span><?php endif; ?>
+</a>
 
-    <!-- REPORTS: Admin only -->
 <?php if ($user_role === 'admin'): ?>
+<a href="<?php echo isset($base_path) ? $base_path : ''; ?>customers.php"
+   class="nav-item <?= $active_nav==='customers' ?'active':'' ?>">
+  <span class="nav-icon">👥</span> Customers
+</a>
+
 <div class="nav-section">Reports</div>
 <a href="<?php echo isset($base_path) ? $base_path : ''; ?>inventory_report.php"
    class="nav-item <?= $active_nav==='inventory_report' ?'active':'' ?>">
@@ -88,16 +81,13 @@ $pending_orders = (int)$conn->query("SELECT COUNT(*) AS c FROM orders WHERE stat
    class="nav-item <?= $active_nav==='sales_report' ?'active':'' ?>">
   <span class="nav-icon">📈</span> Sales Report
 </a>
-<?php endif; ?>
 
-<!-- USER MANAGEMENT: Admin only -->
-<?php if ($user_role === 'admin'): ?>
 <div class="nav-section">System</div>
-    <a href="<?php echo isset($base_path) ? $base_path : ''; ?>users.php"
-       class="nav-item <?= $active_nav==='users' ?'active':'' ?>">
-      <span class="nav-icon">🔐</span> User Management
-    </a>
-    <?php endif; ?>
+<a href="<?php echo isset($base_path) ? $base_path : ''; ?>users.php"
+   class="nav-item <?= $active_nav==='users' ?'active':'' ?>">
+  <span class="nav-icon">🔐</span> User Management
+</a>
+<?php endif; ?>
 
     <div class="sidebar-footer">
       <div class="user-chip">
@@ -106,7 +96,7 @@ $pending_orders = (int)$conn->query("SELECT COUNT(*) AS c FROM orders WHERE stat
           <div class="uname"><?= htmlspecialchars($user_name) ?></div>
           <div class="urole"><?= ucfirst(htmlspecialchars($user_role)) ?></div>
         </div>
-        <a href="logout.php" class="logout-link" title="Sign out">⏻</a>
+        <a href="logout.php" class="logout-link" title="Sign out">Logout</a>
       </div>
     </div>
   </aside>

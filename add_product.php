@@ -2,12 +2,6 @@
 $page_title='Add Product'; $active_nav='add_product';
 require 'layout.php';
 
-// ── STAFF GUARD ──────────────────────────────────────────────────────────────
-if ($user_role === 'staff') {
-    header("Location: orders.php"); exit;
-}
-// ─────────────────────────────────────────────────────────────────────────────
-
 $msg=$err='';
 $form=['name'=>'','category'=>'','price'=>'','quantity'=>'','min_qty'=>'5','supplier'=>'','description'=>'','image_url'=>''];
 

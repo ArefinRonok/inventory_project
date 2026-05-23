@@ -2,13 +2,7 @@
 $page_title='Dashboard'; $active_nav='dashboard';
 require 'layout.php';
 
-// ── STAFF GUARD ──────────────────────────────────────────────────────────────
-// Staff are only allowed to access Orders and Products (inventory report).
-// If a staff user tries to open this page directly, redirect them to Orders.
-if ($user_role === 'staff') {
-    header("Location: orders.php"); exit;
-}
-// ─────────────────────────────────────────────────────────────────────────────
+
 
 $total_products = (int)$conn->query("SELECT COUNT(*) AS c FROM products")->fetch_assoc()['c'];
 $total_orders   = (int)$conn->query("SELECT COUNT(*) AS c FROM orders")->fetch_assoc()['c'];
@@ -58,8 +52,9 @@ function sb($s){$m=['pending'=>'b-amber','completed'=>'b-blue','delivered'=>'b-g
   </div>
 </div>
 
+<?php if ($user_role === 'admin'): ?>
 <div class="card">
-  <div class="card-header"><h3>📊 Quick Stats</h3></div>
+<div class="card-header"><h3>📊 Quick Stats</h3></div>
   <div class="card-body">
     <div class="three-col">
       <div style="background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius);padding:18px;text-align:center">
@@ -77,6 +72,6 @@ function sb($s){$m=['pending'=>'b-amber','completed'=>'b-blue','delivered'=>'b-g
     </div>
   </div>
 </div>
-
+<?php endif; ?>
 </div></div></div>
 </body></html>
