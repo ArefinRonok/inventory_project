@@ -15,7 +15,10 @@ if($_SERVER['REQUEST_METHOD']==='POST'&&isset($_POST['edit_id'])){
     $id=(int)$_POST['edit_id'];
     $name=trim($_POST['name']??''); $cat=trim($_POST['category']??'');
     $pr=(float)($_POST['price']??0); $qty=(int)($_POST['quantity']??0);
-    $mq=(int)($_POST['min_qty']??5); $sup=trim($_POST['supplier']??'');
+$mq=(int)($_POST['min_qty']??5); $sup=trim($_POST['supplier']??'');
+if($qty < 0){ $err="Quantity cannot be negative."; }
+elseif($mq < 0){ $err="Min stock level cannot be negative."; }
+elseif($pr < 0){ $err="Price cannot be negative."; }
     $desc=trim($_POST['description']??'');
     $image_url = trim($_POST['current_image']??'');
     if(!$name){$err="Name required.";}else{
@@ -78,9 +81,9 @@ if($edit_id){$es=$conn->prepare("SELECT * FROM products WHERE id=?");$es->bind_p
       <div class="form-wrap"><div class="form-grid">
         <div class="fg"><label>Name *</label><input type="text" name="name" value="<?=htmlspecialchars($edit_row['name'])?>" required/></div>
         <div class="fg"><label>Category</label><input type="text" name="category" value="<?=htmlspecialchars($edit_row['category']??'')?>"/></div>
-        <div class="fg"><label>Price (৳)</label><input type="number" name="price" step="0.01" value="<?=$edit_row['price']?>"/></div>
-        <div class="fg"><label>Quantity</label><input type="number" name="quantity" value="<?=$edit_row['quantity']?>"/></div>
-        <div class="fg"><label>Min Stock Level</label><input type="number" name="min_qty" value="<?=$edit_row['min_qty']?>"/></div>
+        <div class="fg"><label>Price (৳)</label><input type="number" name="price" step="0.01" min="0" value="<?=$edit_row['price']?>"/></div>
+        <div class="fg"><label>Quantity</label><input type="number" name="quantity" min="0" value="<?=$edit_row['quantity']?>"/></div>
+        <div class="fg"><label>Min Stock Level</label><input type="number" name="min_qty" min="0" value="<?=$edit_row['min_qty']?>"/></div>
         <div class="fg"><label>Supplier</label><input type="text" name="supplier" value="<?=htmlspecialchars($edit_row['supplier']??'')?>"/></div>
         <div class="fg full"><label>Current Image</label><?php if($edit_row['image_url']):?><img src="<?=htmlspecialchars($edit_row['image_url'])?>" alt="Image" style="max-width:100%;border:1px solid var(--border);border-radius:8px;" /><?php else:?>No image uploaded<?php endif;?></div>
         <div class="fg full"><label>Replace Image</label><input type="file" name="image_file" accept="image/*"/></div>

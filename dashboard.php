@@ -29,7 +29,7 @@ function sb($s){$m=['pending'=>'b-amber','completed'=>'b-blue','delivered'=>'b-g
 
 <div class="two-col">
   <div class="card">
-    <div class="card-header"><h3>🧾 Recent Orders</h3><a href="/inventory_project/admin/orders.php" class="btn btn-sm btn-ghost">View All</a></div>
+    <div class="card-header"><h3>🧾 Recent Orders</h3><a href="orders.php" class="btn btn-sm btn-ghost">View All</a></div>
     <div class="tbl-wrap"><table>
       <thead><tr><th>Order #</th><th>Customer</th><th>Total</th><th>Status</th></tr></thead>
       <tbody>
@@ -40,7 +40,7 @@ function sb($s){$m=['pending'=>'b-amber','completed'=>'b-blue','delivered'=>'b-g
     </table></div>
   </div>
   <div class="card">
-    <div class="card-header"><h3>⚠️ Low Stock</h3><a href="add_product.php" class="btn btn-sm btn-primary">+ Restock</a></div>
+    <div class="card-header"><h3>⚠️ Low Stock</h3></div>
     <div class="tbl-wrap"><table>
       <thead><tr><th>Product</th><th>Qty</th><th>Min</th></tr></thead>
       <tbody>

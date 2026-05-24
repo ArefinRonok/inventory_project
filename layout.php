@@ -31,6 +31,13 @@ $pending_orders = (int)$conn->query("SELECT COUNT(*) AS c FROM orders WHERE stat
 .date-chip{background:rgba(255,255,255,0.15) !important;color:#ffffff !important;}
 .main{height:100vh;overflow-y:auto;}
 </style>
+<script>
+window.onpageshow = function(event) {
+    if (event.persisted) {
+        window.location.reload();
+    }
+};
+</script>
 </head><body>
 <div class="layout">
   <aside class="sidebar">
@@ -60,7 +67,7 @@ $pending_orders = (int)$conn->query("SELECT COUNT(*) AS c FROM orders WHERE stat
 </a>
 
 <div class="nav-section">Commerce</div>
-<a href="orders.php"
+<a href="<?php echo isset($base_path) ? $base_path : ''; ?>orders.php"
    class="nav-item <?= $active_nav==='orders' ?'active':'' ?>">
   <span class="nav-icon">🧾</span> Orders
   <?php if ($pending_orders > 0): ?><span class="nav-badge"><?= $pending_orders ?></span><?php endif; ?>

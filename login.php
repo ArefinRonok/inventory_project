@@ -28,11 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             // ── ROLE-BASED REDIRECT ──────────────────────────────────────
             // Staff can only access Orders and Products (inventory report)
-            if ($user['role'] === 'staff') {
-                header("Location: orders.php"); exit;
-            } else {
-                header("Location: dashboard.php"); exit;
-            }
+            header("Location: dashboard.php"); exit;
             // ─────────────────────────────────────────────────────────────
         }
 

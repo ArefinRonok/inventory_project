@@ -246,39 +246,5 @@ $users = $stmt->get_result();
   </div>
 </div>
 
-<!-- Permission Summary Card -->
-<div class="card" style="margin-top:24px">
-  <div class="card-header"><h3>🔐 Permission Summary</h3></div>
-  <div class="card-body" style="padding:20px 24px">
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
-
-      <div style="background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius);padding:18px">
-        <div style="font-size:15px;font-weight:700;color:var(--green);margin-bottom:12px">🛡️ Admin</div>
-        <ul style="list-style:none;padding:0;font-size:13px;color:var(--text1);line-height:2">
-          <li>✅ Dashboard & statistics</li>
-          <li>✅ Add / edit / delete products</li>
-          <li>✅ View & manage orders</li>
-          <li>✅ View & manage customers</li>
-          <li>✅ Add / manage system users</li>
-          <li>✅ Change user roles & status</li>
-        </ul>
-      </div>
-
-      <div style="background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius);padding:18px">
-        <div style="font-size:15px;font-weight:700;color:var(--amber);margin-bottom:12px">👷 Staff</div>
-        <ul style="list-style:none;padding:0;font-size:13px;color:var(--text1);line-height:2">
-          <li>✅ Take / manage orders</li>
-          <li>✅ View inventory (products list)</li>
-          <li>❌ Dashboard</li>
-          <li>❌ Add or edit products</li>
-          <li>❌ View customers</li>
-          <li>❌ User management</li>
-        </ul>
-      </div>
-
-    </div>
-  </div>
-</div>
-
 </div></div></div>
 </body></html>

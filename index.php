@@ -1,9 +1,20 @@
 <?php
 session_start();
+header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+header("Cache-Control: post-check=0, pre-check=0", false);
+header("Pragma: no-cache");
+header("Expires: Sat, 01 Jan 2000 00:00:00 GMT");
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script>
+window.onpageshow = function(event) {
+    if (event.persisted) {
+        window.location.reload();
+    }
+};
+</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ToolMaster - Industrial Ventilation Solutions</title>
@@ -226,15 +237,15 @@ session_start();
     <a href="our-products.php">Our Products</a>
     <a href="about.php">About Us</a>
     <a href="contact.php">Contact</a>
-    <?php if (isset($_SESSION['user_id'])): ?>
-        <a href="dashboard.php" class="btn btn-primary">Dashboard</a>
-        <a href="logout.php" class="btn btn-secondary">Logout</a>
-    <?php elseif (isset($_SESSION['customer_id'])): ?>
-        <a href="shop.php" class="btn btn-primary">Shop</a>
-        <a href="logout.php" class="btn btn-secondary">Logout</a>
-    <?php else: ?>
-        <a href="login.php" class="btn btn-primary">Login / Sign Up</a>
-    <?php endif; ?>
+<?php if (isset($_SESSION['user_id'])): ?>
+    <a href="dashboard.php" class="btn btn-primary" style="margin-left:20px;">Dashboard</a>
+    <a href="logout.php" class="btn btn-primary" style="margin-left:8px;">Logout</a>
+<?php elseif (isset($_SESSION['customer_id'])): ?>
+    <a href="shop.php" class="btn btn-primary" style="margin-left:20px;">Shop</a>
+    <a href="logout.php" class="btn btn-primary" style="margin-left:8px;">Logout</a>
+<?php else: ?>
+    <a href="login.php" class="btn btn-primary" style="margin-left:20px;">Login / Sign Up</a>
+<?php endif; ?>
 </nav>
         </div>
     </header>

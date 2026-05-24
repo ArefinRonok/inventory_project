@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['order_id'], $_POST['o
         $stmt = $conn->prepare("UPDATE orders SET status=? WHERE id=?");
         $stmt->bind_param("si", $new_status, $order_id);
         $stmt->execute();
-        header("Location: /inventory_project/admin/orders.php?updated=1");
+       header("Location: orders.php?updated=1");
         exit;
     }
 }
@@ -33,7 +33,7 @@ function step($status){$steps=['pending'=>1,'completed'=>2,'delivered'=>3,'cance
 
   <h2 style="font-size:20px;font-weight:800">📦 All Orders</h2>
 
-  <a href="<?= $base_path ?>admin/take_order.php"
+  <a href="take_order.php"
      style="
         padding:8px 14px;
         background:var(--accent);
