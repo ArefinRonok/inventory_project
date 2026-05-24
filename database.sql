@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 10, 2026 at 03:56 PM
+-- Generation Time: May 24, 2026 at 04:52 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -34,14 +34,6 @@ CREATE TABLE `cart` (
   `quantity` int(11) NOT NULL DEFAULT 1,
   `added_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `cart`
---
-
-INSERT INTO `cart` (`id`, `customer_id`, `product_id`, `quantity`, `added_at`) VALUES
-(14, 1, 16, 5, '2026-05-08 12:24:48'),
-(15, 1, 14, 1, '2026-05-08 13:42:02');
 
 -- --------------------------------------------------------
 
@@ -107,8 +99,10 @@ INSERT INTO `orders` (`id`, `order_no`, `customer_name`, `customer_email`, `cust
 (8, 'ORD1778009691', 'Arefin Ronok', NULL, '01321608350', NULL, NULL, 1, NULL, 87900.00, 'Dhaka\r\nGazipur', 'completed', NULL, '2026-05-05 19:34:51', 'cash', NULL),
 (9, 'ORD1778010502', 'Arefin Ronok', NULL, '01321608350', NULL, NULL, 1, NULL, 6500.00, 'Dhaka\r\nGazipur', 'cancelled', NULL, '2026-05-05 19:48:22', 'cash', NULL),
 (10, 'TM-20260507-C1EA', 'Tom', NULL, '01321560835', NULL, NULL, 1, NULL, 21500.00, 'Gazipur', 'pending', NULL, '2026-05-07 07:44:57', 'cash', NULL),
-(11, 'TM-20260507-1345', 'arefinronok', 'arefinronok13@gmail.com', '0132160835', 1, NULL, 1, NULL, 6500.00, 'Dhaka', 'completed', '', '2026-05-07 10:44:39', 'cash', ''),
-(12, 'TM-20260507-1046', 'arefinronok', 'arefinronok13@gmail.com', '0132160835', 1, NULL, 1, NULL, 60000.06, 'Dhaka', 'pending', '', '2026-05-07 11:13:39', 'cash', '');
+(11, 'TM-20260507-1345', 'arefinronok', 'arefinronok13@gmail.com', '0132160835', 1, NULL, 1, NULL, 6500.00, 'Dhaka', 'cancelled', '', '2026-05-07 10:44:39', 'cash', ''),
+(12, 'TM-20260507-1046', 'arefinronok', 'arefinronok13@gmail.com', '0132160835', 1, NULL, 1, NULL, 60000.06, 'Dhaka', 'cancelled', '', '2026-05-07 11:13:39', 'cash', ''),
+(13, 'TM-20260524-3271', 'arefinronok', 'arefinronok13@gmail.com', '01321608350', 1, NULL, 1, NULL, 26000.00, 'Dhaka', 'pending', '', '2026-05-24 11:59:22', 'bank_transfer', '01005127175'),
+(14, 'TM-20260524-BA04', 'Arshad', NULL, '01574678350', NULL, NULL, 1, NULL, 11400.00, 'Dhaka\r\nAirport', 'pending', NULL, '2026-05-24 14:23:17', 'cash', NULL);
 
 -- --------------------------------------------------------
 
@@ -143,7 +137,9 @@ INSERT INTO `order_items` (`id`, `order_id`, `product_id`, `product_name`, `quan
 (9, 10, NULL, 'Roof Mounted Fan (HATARI-36)', 1, 0.00, 0.00, 6500.00),
 (10, 10, NULL, 'Roof Mounted Fan (HTF-48)', 1, 0.00, 0.00, 15000.00),
 (11, 11, 16, 'Roof Mounted Fan (HATARI-36)', 1, 6500.00, 6500.00, 0.00),
-(12, 12, NULL, 'Catto', 6, 10000.01, 60000.06, 0.00);
+(12, 12, NULL, 'Catto', 6, 10000.01, 60000.06, 0.00),
+(13, 13, 23, 'Axial Blower Fan', 5, 5200.00, 26000.00, 0.00),
+(14, 14, NULL, 'Drop Hammer Exhaust Fan', 3, 0.00, 0.00, 3800.00);
 
 -- --------------------------------------------------------
 
@@ -176,8 +172,8 @@ INSERT INTO `products` (`id`, `name`, `category`, `price`, `min_qty`, `supplier`
 (17, 'Industrial & Commercial Dehumidifier in Bangladesh', 'Industrial Cooling System', 25800.00, 5, '0', 'Dehumidifier Specifications\r\nModel No.	TMEC-DHF-001\r\nDisplay	LED Display\r\nPower-off Memory Function	Yes\r\nSize (H×W×L)	H1600 × W610 × L400 mm\r\nController	Automatic Defrost System\r\nAutomatic Humidity Control	Yes\r\nIntelligent Control System	Microcomputer Based\r\nTrademark	DXSL or OEM\r\nCertification	CE, ROHS, CCC, ISO9001\r\nOrigin	China', '2026-05-05 05:09:41', 'uploads/products/product-1777957781-6d776450.png', 35, 35),
 (19, 'FRP Wall Exhaust Fan', 'Exhaust Fan', 4500.00, 5, '0', 'Key Features of FRP Wall Exhaust Fans\r\nCorrosion Resistant: Withstands harsh chemicals and saline air.\r\nHigh Airflow Capacity: Designed to quickly remove heat and fumes.\r\nLow Noise Operation: Smooth and quiet performance even at high speed.\r\nEnergy Efficient: Consumes less power while providing maximum ventilation.\r\nCustom Sizes Available: Can be manufactured to suit specific building needs.', '2026-05-08 13:53:29', 'uploads/products/product-1778248409-912a01d8.png', 0, 25),
 (21, 'Push Pull Exhaust Fan', 'Exhaust Fan', 4000.00, 5, '0', 'Dual-Action Mechanism: Simultaneous air intake and exhaust for maximum efficiency.\r\nEnergy Efficiency: Optimized motors reduce electricity consumption.\r\nDurable Build: Made with high-quality materials for long-lasting performance.\r\nWeather Resistance: Many models are weatherproof, ensuring functionality even in harsh environments.\r\nEasy Installation: Compatible with various mounting options.', '2026-05-08 13:58:24', 'uploads/products/product-1778248704-4eaa4b89.png', 0, 15),
-(22, 'Drop Hammer Exhaust Fan', 'Exhaust Fan', 3800.00, 5, '0', 'Automatic Louvers:\r\nThe “drop hammer” mechanism allows the louvers to open when the fan is running and close when it’s off, preventing backflow and protecting against dust, rain, and pests.\r\nHigh Airflow Efficiency:\r\nThese fans are designed to move large volumes of air efficiently, helping maintain optimal airflow in large spaces.\r\nDurable Construction:\r\nTypically made from galvanized steel or other weather-resistant materials to withstand harsh environments.', '2026-05-08 14:02:06', 'uploads/products/product-1778248926-af3296b2.png', 0, 23),
-(23, 'Axial Blower Fan', 'Ventilation', 5200.00, 5, '0', 'Energy Efficiency: They provide high efficiency in low-pressure, large-volume applications.Industrial\r\n Durability: Often built with high-quality materials and motor protections, such as IP55 standards and Class F insulation for withstanding harsh conditions.Operational \r\nRange: Suitable for high-speed industrial needs, ranging from 1,000 to 80,000 \\(\\text{m}^3\\text{/h}\\) of airflow', '2026-05-08 14:07:22', 'uploads/products/product-1778249242-53e668d3.png', 0, 32);
+(22, 'Drop Hammer Exhaust Fan', 'Exhaust Fan', 3800.00, 5, '0', 'Automatic Louvers:\r\nThe “drop hammer” mechanism allows the louvers to open when the fan is running and close when it’s off, preventing backflow and protecting against dust, rain, and pests.\r\nHigh Airflow Efficiency:\r\nThese fans are designed to move large volumes of air efficiently, helping maintain optimal airflow in large spaces.\r\nDurable Construction:\r\nTypically made from galvanized steel or other weather-resistant materials to withstand harsh environments.', '2026-05-08 14:02:06', 'uploads/products/product-1778248926-af3296b2.png', 0, 0),
+(23, 'Axial Blower Fan', 'Ventilation', 5200.00, 5, '0', 'Energy Efficiency: They provide high efficiency in low-pressure, large-volume applications.Industrial\r\n Durability: Often built with high-quality materials and motor protections, such as IP55 standards and Class F insulation for withstanding harsh conditions.Operational \r\nRange: Suitable for high-speed industrial needs, ranging from 1,000 to 80,000 \\(\\text{m}^3\\text{/h}\\) of airflow', '2026-05-08 14:07:22', 'uploads/products/product-1778249242-53e668d3.png', 0, 25);
 
 -- --------------------------------------------------------
 
@@ -201,7 +197,8 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `role`, `status`, `created_at`) VALUES
 (2, 'Admin User', 'admin@toolmasterbd.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'admin', 'active', '2026-05-02 20:49:21'),
-(3, 'Jackson', 'jack@gmail.com', '$2y$10$1323neht.hJgNFxH/2p5cOnR7QlQS0ExyjQVP.4EC5uo6O8UsiDP.', 'staff', 'active', '2026-05-05 17:44:51');
+(3, 'Jackson', 'jack@gmail.com', '$2y$10$1323neht.hJgNFxH/2p5cOnR7QlQS0ExyjQVP.4EC5uo6O8UsiDP.', 'staff', 'active', '2026-05-05 17:44:51'),
+(4, 'tom', 'tom@toolmasterbd.com', '$2y$10$vmUwQwJDYBo.8uJ8hPSFG.dlMzzNfDQg7GiqQjpGN1cjpxJTTHlN.', 'staff', 'active', '2026-05-23 20:12:55');
 
 --
 -- Indexes for dumped tables
@@ -259,7 +256,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `customers`
@@ -271,25 +268,25 @@ ALTER TABLE `customers`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `order_items`
 --
 ALTER TABLE `order_items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Constraints for dumped tables
