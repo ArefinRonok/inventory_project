@@ -61,10 +61,10 @@ window.onpageshow = function(event) {
   <span class="nav-icon">📦</span> Products
   <?php if ($low_stock > 0): ?><span class="nav-badge"><?= $low_stock ?></span><?php endif; ?>
 </a>
-<a href="<?php echo isset($base_path) ? $base_path : ''; ?>add_product.php"
-   class="nav-item <?= $active_nav==='add_product' ?'active':'' ?>">
-  <span class="nav-icon">➕</span> Add Product
-</a>
+<a href="<?php echo isset($base_path) ? $base_path : ''; ?>add_product.php" class="nav-item <?= $active_nav==='add_product'?'active':'' ?>"><span class="nav-icon">➕</span> Add Product</a>
+
+<div class="nav-section">Store</div>
+<a href="/inventory_project/index.php" class="nav-item" target="_blank"><span class="nav-icon">🏠</span> Go To Home</a>
 
 <div class="nav-section">Commerce</div>
 <a href="<?php echo isset($base_path) ? $base_path : ''; ?>orders.php"

@@ -30,6 +30,8 @@ $initials   = strtoupper(substr($cust_name,0,1));
     The Tool Master BD
   </a>
   <div class="cust-nav-links">
+    
+    <a href="/inventory_project/index.php" class="cust-nav-link <?=$active_page==='home'?'active':''?>">🏠 Home</a>
     <a href="<?php echo isset($base_path) ? $base_path : ''; ?>shop.php"   class="cust-nav-link <?=$active_page==='shop'  ?'active':''?>">🛍️ Shop</a>
     <a href="/inventory_project/customer/orders.php" class="cust-nav-link <?=$active_page==='orders'?'active':''?>">📦 My Orders</a>
     <a href="<?php echo isset($base_path) ? $base_path : ''; ?>cart.php"   class="cart-btn">
