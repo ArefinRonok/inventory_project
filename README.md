@@ -9,7 +9,7 @@ Designed for **The Tool Master BD** — managing products, tracking orders, and 
 
 | Role | Access |
 |------|--------|
-| 🔴 Admin | Full control — dashboard, products, orders, customers, user management, sales & inventory reports |
+| 🟢 Admin | Full control — dashboard, products, orders, customers, user management, sales & inventory reports |
 | 🟡 Staff | Limited access — dashboard, products, orders, customers. No access to user management, sales reports, or inventory reports |
 | 🛍️ Customer | Shop, cart, order placement, own order history |
 
