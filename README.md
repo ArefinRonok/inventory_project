@@ -198,4 +198,4 @@ GitHub: [@ArefinRonok](https://github.com/ArefinRonok)
 
 ---
 
-*© 2025 The Tool Master BD. Built with Core PHP & MySQL.*
+*© 2026 The Tool Master BD. Built with Core PHP & MySQL.*
