@@ -96,6 +96,7 @@ The dashboard loads **8 live SQL queries** on every page load:
 - Alert notifications for success, warning, and error states
 - Animated slideshow login page with Ken Burns effect
 - Low stock warning banners on dashboard
+- All three roles (admin, staff, customer) have a **Home** link to navigate back to the main site from any page
 
 ---
 
