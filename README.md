@@ -18,10 +18,16 @@ Designed for **The Tool Master BD** — managing products, tracking orders, and 
 ## 🚀 Features
 
 ### 🔐 Authentication System
-- Secure login for **Admin/Staff** and **Customers** from a single login page
+- **3 user roles** — `admin`, `staff`, and `customer`
+- Admin and Staff share the same `users` table with a `role` column — `ENUM('admin','staff')`
+- Customers are stored in a separate `customers` table
+- Single login page handles all three roles automatically
 - Passwords hashed using `password_hash()` (bcrypt) — never stored as plain text
 - Session-based authentication with `session_regenerate_id()` to prevent session fixation
-- Role-based access control — admins go to Dashboard, customers go to Shop
+- Role-based access control:
+  - `admin` — full access to everything
+  - `staff` — no access to user management, sales reports, and inventory reports
+  - `customer` — redirected to shop after login
 - Prepared statements on all login queries to prevent SQL injection
 
 ---
