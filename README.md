@@ -36,18 +36,23 @@ Designed for **The Tool Master BD** — managing products, tracking orders, and 
 
 ### 🧾 Order Management
 - Customers can create orders from the shop or cart
-- **Order status tracking** with four stages:
-
-| Status | Meaning |
-|--------|---------|
-| 🟡 Pending | Order placed, awaiting processing |
-| 🔵 Completed | Order processed and confirmed |
-| 🟢 Delivered | Order delivered to customer |
-| 🔴 Cancelled | Order cancelled |
-
 - Admin can view and update **all orders**
 - Customers can view **their own order history**
-- Visual **order progress tracker** (step-by-step)
+- **Four order statuses** with color-coded badges:
+  - `pending` — amber
+  - `completed` — blue
+  - `delivered` — green
+  - `cancelled` — red (written as text, no progress tracker shown)
+- Visual **3-step progress tracker** shown on all non-cancelled orders:
+
+| Step | Icon | Label |
+|------|------|-------|
+| 1 | 🧾 | Order Placed |
+| 2 | ✅ | Processing |
+| 3 | 🚚 | Delivered |
+
+- Completed steps highlight in accent color, pending steps are grayed out
+- If status is `cancelled`, the tracker is hidden — only the red badge is shown
 
 ---
 
